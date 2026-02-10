@@ -111,6 +111,43 @@ Spawn a fiber running 'client_function' per client:
 
 - Detect architecture automatically using known defines
 
+## Monitoring & Demo (Grafana)
+
+The project includes a monitoring stack to visualize the performance difference between `libfiber` and standard Linux `pthreads`.
+
+### 1. Requirements (Windows Users)
+- **WSL (Windows Subsystem for Linux)**: Required to compile and run the project code.
+- **Docker Desktop**: Required to run the Grafana/Prometheus monitoring stack.
+
+### 2. Setting Up the Demo
+A script is provided to bundle all monitoring tools and dashboards:
+```bash
+# 1. Build the library
+make
+
+# 2. Create the demo package
+chmod +x create_demo_zip.sh
+./create_demo_zip.sh
+
+# 3. Enter the package and start the monitoring stack
+cd libfiber_demo_package
+chmod +x setup_demo.sh
+./setup_demo.sh
+```
+
+### 3. Running Benchmarks
+Once the stack is running, you can compare the fiber-based echo server against a standard thread-per-connection server:
+```bash
+# From inside libfiber_demo_package:
+./tools/run_experiment.sh ../bin/echo_server ./bin/thread_server
+```
+
+### 4. Viewing Results
+- **Grafana**: Open [http://localhost:3000](http://localhost:3000) (User: `admin`, Pass: `admin`).
+- **Dashboard**: Select the **"libfiber vs threads"** dashboard to see real-time comparisons of throughput, latency, and resource usage.
+
+> **Note**: The benchmarking tool (`loadgen.py`) requires the `psutil` library. Install it with: `pip install psutil`
+
 ## License
 
 MIT License
