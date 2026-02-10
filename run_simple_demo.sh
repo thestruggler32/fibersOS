@@ -25,7 +25,8 @@ sudo apt-get install -y -qq build-essential python3-flask python3-psutil 2>/dev/
 
 # 2. Build servers
 echo -e "\n${GREEN}[2/3] Building servers...${NC}"
-make -j$(nproc) || make
+# Build only what we need for the demo (skips 40+ slow tests)
+make libfiber.so bin/echo_server -j$(nproc) || make libfiber.so bin/echo_server
 
 # Compile thread server
 if [ ! -f "bin/thread_server" ]; then

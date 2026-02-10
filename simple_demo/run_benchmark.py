@@ -22,7 +22,8 @@ HOST = "127.0.0.1"
 def compile_servers():
     """Compile both echo servers if needed."""
     print("Building servers...")
-    subprocess.run(["make"], check=True, cwd="..")
+    # Build only what we need (skips tests)
+    subprocess.run(["make", "libfiber.so", "bin/echo_server"], check=True, cwd="..")
     
     # Compile thread server
     thread_server = Path("../bin/thread_server")
