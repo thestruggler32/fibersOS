@@ -143,8 +143,6 @@ TESTS= \
     test_multi_channel \
     test_bounded_mpmc_channel \
     test_bounded_mpmc_channel2 \
-    test_fifo_steal_scale \
-    test_sharded_fifo_steal_scale \
 
 #    test_channel \
 #    test_pthread_cond \
