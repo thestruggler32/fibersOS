@@ -119,7 +119,15 @@ The project includes a monitoring stack to visualize the performance difference 
 - **WSL (Windows Subsystem for Linux)**: Required to compile and run the project code.
 - **Docker Desktop**: Required to run the Grafana/Prometheus monitoring stack.
 
-### 2. Setting Up the Demo
+### Quick Start (Master Script)
+
+If you are on **Ubuntu/Debian**, you can run everything (install dependencies, build, and start the dashboard) with one command:
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+### Manual setup (if the script fails)
 A script is provided to bundle all monitoring tools and dashboards:
 ```bash
 # 1. Build the library
