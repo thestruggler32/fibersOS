@@ -111,7 +111,28 @@ Spawn a fiber running 'client_function' per client:
 
 - Detect architecture automatically using known defines
 
-## Monitoring & Demo (Grafana)
+## Performance Demo
+
+### 🚀 Simple Demo (Recommended for Presentations)
+
+For a quick, visual comparison without Docker/Prometheus complexity:
+
+```bash
+chmod +x run_simple_demo.sh
+./run_simple_demo.sh
+```
+
+This will:
+1. Install minimal dependencies (`python3-flask`, `python3-psutil`)
+2. Build both fiber and thread servers
+3. Open a beautiful web dashboard at `http://localhost:5000`
+4. Click "Run Benchmark" to see real-time performance comparisons
+
+**Perfect for demonstrations** - clean UI with interactive charts showing throughput, latency, CPU, and memory comparisons.
+
+---
+
+### 🔧 Advanced Monitoring (Grafana)
 
 The project includes a monitoring stack to visualize the performance difference between `libfiber` and standard Linux `pthreads`.
 
